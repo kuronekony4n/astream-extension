@@ -8,6 +8,7 @@ Discover a seamless way to stream anime directly from AniList or MyAnimeList. As
 More Feature List and Installation, visit: https://astream-ext.pages.dev/
 
 TODO: (// is implemented)
+
 0. //Add Navigation Bar at the Bottom: Recent Update, Settings, Info
 1. Add anime to library button, from context menu, and from episode selection list
 2. Every key in library will save gogoanime-animeid, mal_id, link provider when it saved it will use IndexedDB to save it
