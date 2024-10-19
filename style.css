@@ -134,7 +134,6 @@ label {
     margin-bottom: 15px;
 }
 
-/* New styles for label-select alignment */
 .section-bottom label {
     grid-column: 1;
 }
@@ -394,9 +393,6 @@ label {
     }
 }
 
-/* Random Anime */  
-
-
 .recent-container {
     position: relative;
     border-radius: var(--border-radius);
@@ -443,4 +439,17 @@ label {
     cursor: pointer;
     font-size: 12px;
     text-align: center;
+}
+
+.donate{
+    text-align: center;
+    font-size: 12px;
+    padding: 5px 10px;
+    background: linear-gradient(to left, #2d2d4d, #151F2E);
+    border-top: 1px solid #2d2d4d;
+}
+
+.donate a{
+    color: yellow;
+    text-decoration: none;
 }
