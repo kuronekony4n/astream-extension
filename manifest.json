@@ -1,0 +1,36 @@
+{
+    "manifest_version": 3,
+    "name": "Astream Extension",
+    "version": "1.0",
+    "description": "Watching anime made easy!",
+    "permissions": [
+        "contextMenus",
+        "activeTab",
+        "storage"
+    ],
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "Astream Extension by 0willy"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "icons": {
+        "16": "/media/icon16-active.png",
+        "48": "/media/icon48.png",
+        "128": "/media/icon128.png"
+    },
+    "host_permissions": [
+        "https://*/"
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "/data/supportedsites.json"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}

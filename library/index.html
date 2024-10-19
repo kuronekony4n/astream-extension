@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Library</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --accent-color: #bb86fc;
+            --secondary-color: #03dac6;
+            --danger-color: #cf6679;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: linear-gradient(135deg, #1e1e1e, #2d2d2d);
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .sidebar a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover, .sidebar a.active {
+            background-color: var(--accent-color);
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .search-sort {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin-right: 1rem;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+        }
+
+        .sort-select {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+        }
+
+        .anime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .anime-card {
+            background: linear-gradient(135deg, #2d2d2d, #1e1e1e);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            animation: fadeIn 0.5s ease-out;
+            position: relative;
+        }
+
+        .anime-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .anime-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--danger-color);
+            border: none;
+            color: var(--text-color);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .anime-info {
+            padding: 1rem;
+        }
+
+        .anime-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .anime-date, .anime-source {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        .episode-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            width: 100%;
+        }
+
+        .episode-counter button {
+            background-color: var(--accent-color);
+            border: none;
+            color: var(--text-color);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .episode-input {
+            width: 40px;
+            background-color: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--text-color);
+            text-align: center;
+            font-size: 1rem;
+            padding: 0.2rem;
+            border-radius: 3px;
+        }
+
+        .empty-message {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 1rem;
+            }
+
+            .anime-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .anime-image {
+                height: 210px;
+            }
+
+            .search-sort {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-bar {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <a href="#" class="active">Library</a>
+        <a href="#">Recently Watched</a>
+        <a href="#">Settings</a>
+        <a href="https://astream.pages.dev/#donate">Donate</a>
+        <a href="https://astream.pages.dev/">About</a>
+    </nav>
+    <main class="main-content">
+        <div class="search-sort">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search anime...">
+            </div>
+            <select id="sortSelect" class="sort-select">
+                <option value="newToOld">Newest to Oldest</option>
+                <option value="oldToNew">Oldest to Newest</option>
+            </select>
+        </div>
+        <h2>This feature is not available yet. Wait for the next update.</h2>
+        <div class="anime-grid" id="animeGrid"></div>
+    </main>
+
+    <script>
+        const animeList = [
+            { id: 1, title: "Attack on Titan", image: "https://via.placeholder.com/200x280", dateAdded: 1684108800000, episodes: 25, source: "MyAnimeList" },
+            { id: 2, title: "My Hero Academia", image: "https://via.placeholder.com/200x280", dateAdded: 1684022400000, episodes: 13, source: "Netflix" },
+            { id: 3, title: "Demon Slayer", image: "https://via.placeholder.com/200x280", dateAdded: 1683936000000, episodes: 26, source: "Crunchyroll" },
+            { id: 4, title: "One Punch Man", image: "https://via.placeholder.com/200x280", dateAdded: 1683849600000, episodes: 12, source: "Hulu" },
+            { id: 5, title: "Death Note", image: "https://via.placeholder.com/200x280", dateAdded: 1683763200000, episodes: 37, source: "MyAnimeList" },
+            { id: 6, title: "Fullmetal Alchemist: Brotherhood", image: "https://via.placeholder.com/200x280", dateAdded: 1683676800000, episodes: 64, source: "Netflix" },
+        ];
+
+        const animeGrid = document.getElementById('animeGrid');
+        const searchInput = document.getElementById('searchInput');
+        const sortSelect = document.getElementById('sortSelect');
+
+        function renderAnimeList(list) {
+            animeGrid.innerHTML = '';
+            if (list.length === 0) {
+                const emptyMessage = document.createElement('div');
+                emptyMessage.classList.add('empty-message');
+                emptyMessage.textContent = 'Anime library is empty';
+                animeGrid.appendChild(emptyMessage);
+            } else {
+                list.forEach(anime => {
+                    const animeCard = document.createElement('div');
+                    animeCard.classList.add('anime-card');
+                    animeCard.innerHTML = `
+                        <img src="${anime.image}" alt="${anime.title}" class="anime-image">
+                        <button class="delete-btn" onclick="deleteAnime(${anime.id})">×</button>
+                        <div class="anime-info">
+                            <h3 class="anime-title">${anime.title}</h3>
+                            <p class="anime-date">Added: ${new Date(anime.dateAdded).toLocaleDateString()}</p>
+                            <p class="anime-source">Source: ${anime.source}</p>
+                            <div class="episode-counter">
+                                <button onclick="changeEpisodes(${anime.id}, -1)">-</button>
+                                <input type="text" class="episode-input" value="${anime.episodes}" onchange="updateEpisodes(${anime.id}, this.value)">
+                                <button onclick="changeEpisodes(${anime.id}, 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                    animeGrid.appendChild(animeCard);
+                });
+            }
+        }
+
+        function changeEpisodes(id, change) {
+            const anime = animeList.find(a => a.id === id);
+            if (anime) {
+                anime.episodes = Math.max(0, anime.episodes + change);
+                filterAndSortAnime();
+            }
+        }
+
+        function updateEpisodes(id, value) {
+            const anime = animeList.find(a => a.id === id);
+            if (anime) {
+                anime.episodes = Math.max(0, parseInt(value) || 0);
+                filterAndSortAnime();
+            }
+        }
+
+        function deleteAnime(id) {
+            const index = animeList.findIndex(a => a.id === id);
+            if (index !== -1) {
+                animeList.splice(index, 1);
+                filterAndSortAnime();
+            }
+        }
+
+        function filterAndSortAnime() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const sortOrder = sortSelect.value;
+
+            let filteredList = animeList.filter(anime => 
+                anime.title.toLowerCase().includes(searchTerm)
+            );
+
+            filteredList.sort((a, b) => {
+                if (sortOrder === 'newToOld') {
+                    return b.dateAdded - a.dateAdded;
+                } else {
+                    return a.dateAdded - b.dateAdded;
+                }
+            });
+
+            renderAnimeList(filteredList);
+        }
+
+        searchInput.addEventListener('input', filterAndSortAnime);
+        sortSelect.addEventListener('change', filterAndSortAnime);
+
+        filterAndSortAnime();
+    </script>
+</body>
+</html>

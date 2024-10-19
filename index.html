@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astream Extension</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="extractContent" class="section section-top">
+            <div id="content">
+                <p></p>
+            </div>
+        </div>
+
+        <div class="section section-bottom">
+            <label for="endpointSelect" class="tooltip">API Server: (?)
+                <span class="tooltiptext">Select other server if failed to get episodes data.</span>
+            </label>
+            <select id="endpointSelect">
+                <option value="https://no-drab.vercel.app">no-drab</option>
+                <option value="https://consumet-api-theta.vercel.app">theta</option>
+                <option value="https://api-consumet-1vtwea7sc-yizahas-projects.vercel.app">yizahas</option>
+                <option value="https://api-consumet-org-mu.vercel.app">org-mu</option>
+                <option value="https://myaniapi.vercel.app">myaniapi</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="donate"><marquee behavior="scroll" direction="left"><a href="https://astream-ext.pages.dev/#donate" target="_blank">Support us by donating to keep this extension alive and free. Donate starts from $1.</a></marquee></div>
+    <div style="margin-top: 33px;"></div>
+
+    <nav class="navbar">
+        <div class="nav-item" title="Show recently updated Anime" id="recentBtn">
+            Recent
+        </div>
+        <div class="nav-item" id="openLibraryBtn">
+            Library
+        </div>
+        <div class="nav-item" id="info">
+            More
+            <div class="info-dropdown">
+                <a href="#" title="Coming Soon">Settings</a>
+                <a href="https://astream-ext.pages.dev/#donate" target="_blank">Support</a>
+                <a href="https://astream-ext.pages.dev/" target="_blank">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

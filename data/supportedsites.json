@@ -1,0 +1,172 @@
+[
+    {
+        "siteName": "myanimelist",
+        "siteURL": "MyAnimeList.net",
+        "startURL": "https://myanimelist.net/anime/",
+        "browseURL": "https://myanimelist.net/topanime.php",
+        "allowedURL": "https://myanimelist.net/anime/{animeSite_ID}/{url_animeTitle}/*",
+        "titlePart": "{title_animeTitle} - MyAnimeList.net",
+        "titleDeletePart": {
+            "back": " - MyAnimeList.net"
+        }
+    },
+    {
+        "siteName": "anilist",
+        "siteURL": "AniList.co",
+        "startURL": "https://anilist.co/anime/",
+        "browseURL": "https://anilist.co/search/anime/trending",
+        "allowedURL": "https://anilist.co/anime/{animeSite_ID}/{url_animeTitle}/*",
+        "titlePart": "{title_animeTitle} · AniList",
+        "titleDeletePart": {
+            "back": " · AniList"
+        }
+    },
+    {
+        "siteName": "thetvdb",
+        "siteURL": "TheTVDB.com",
+        "startURL": "https://thetvdb.com/series/",
+        "browseURL": "https://thetvdb.com/genres/anime",
+        "allowedURL": "https://thetvdb.com/series/{url_animeTitle}/*",
+        "titlePart": "{title_animeTitle} - TheTVDB.com",
+        "titleDeletePart": {
+            "back": " - TheTVDB.com"
+        }
+    },
+    {
+        "siteName": "anidb",
+        "siteURL": "AniDB.net",
+        "startURL": "https://anidb.net/anime/",
+        "browseURL": "https://anidb.net/anime/season",
+        "allowedURL": "https://anidb.net/anime/{animeSite_ID}/*",
+        "titlePart": "{title_animeTitle} - Anime - AniDB",
+        "titleDeletePart": {
+            "back": " - Anime - AniDB"
+        }
+    },
+    {
+        "siteName": "kitsu",
+        "siteURL": "Kitsu.app",
+        "startURL": "https://kitsu.app/anime/",
+        "browseURL": "https://kitsu.app/explore/anime/highest-rated",
+        "allowedURL": "https://kitsu.app/anime/{url_animeTitle}/*",
+        "titlePart": "{title_animeTitle} | Kitsu",
+        "titleDeletePart": {
+            "back": " | Kitsu"
+        }
+    },
+    {
+        "siteName": "shikimori",
+        "siteURL": "Shikimori.one",
+        "startURL": "https://shikimori.one/animes/",
+        "browseURL": "https://shikimori.one/animes",
+        "allowedURL": "https://shikimori.one/animes/{animeSite_ID}-{url_animeTitle}/",
+        "titlePart": "{title_animeTitle} / Аниме",
+        "titleDeletePart": {
+            "back": " / Аниме"
+        }
+    },
+    {
+        "siteName": "anime-planet",
+        "siteURL": "Anime-Planet.com",
+        "startURL": "https://www.anime-planet.com/anime/",
+        "browseURL": "https://www.anime-planet.com/anime/all",
+        "allowedURL": "https://www.anime-planet.com/anime/{url_animeTitle}/*",
+        "titlePart": "{title_animeTitle} | Anime-Planet",
+        "titleDeletePart": {
+            "back": " | Anime-Planet"
+        }
+    },
+    {
+        "siteName": "crunchyroll",
+        "siteURL": "Crunchyroll.com",
+        "startURL": "https://www.crunchyroll.com/series/",
+        "browseURL": "https://www.crunchyroll.com/videos/popular",
+        "allowedURL": "https://www.crunchyroll.com/series/{animeSite_ID}/{url_animeTitle}/*",
+        "titlePart": "Watch {title_animeTitle} - Crunchyroll",
+        "titleDeletePart": {
+            "front": "Watch ",
+            "back": " - Crunchyroll"
+        }
+    },
+    {
+        "siteName": "imdb",
+        "siteURL": "IMDB.com",
+        "startURL": "https://www.imdb.com/title/",
+        "browseURL": "https://www.imdb.com/interest/in0000027/",
+        "allowedURL": "https://www.imdb.com/title/{animeSite_ID}/*",
+        "titlePart": "{title_animeTitle} - IMDb",
+        "titleDeletePart": {
+            "back": " - IMDb"
+        }
+    },
+    {
+        "siteName": "netflix",
+        "siteURL": "Netflix.com",
+        "startURL": "https://www.netflix.com/",
+        "browseURL": "https://www.netflix.com/browse/genre/81746407",
+        "allowedURL": "https://www.netflix.com/*/title/{animeSite_ID}/*",
+        "titlePart": "Watch {title_animeTitle} | Netflix",
+        "titleDeletePart": {
+            "front": "Watch ",
+            "back": " | Netflix"
+        }
+    },
+    {
+        "siteName": "hulu",
+        "siteURL": "Hulu.com",
+        "startURL": "https://www.hulu.com/series/",
+        "browseURL": "https://www.hulu.com/hub/anime-tv",
+        "allowedURL": "https://www.hulu.com/series/{url_animeTitle}/*",
+        "titlePart": "Watch {title_animeTitle} Streaming Online | Hulu (Free Trial)",
+        "titleDeletePart": {
+            "front": "Watch ",
+            "back": " Streaming Online | Hulu (Free Trial)"
+        }
+    },
+    {
+        "siteName": "amazon",
+        "siteURL": "Prime (Amazon.com)",
+        "startURL": "https://www.amazon.com/gp/video/detail/",
+        "browseURL": "https://www.amazon.com/gp/video/genre/anime/",
+        "allowedURL": "https://www.amazon.com/gp/video/detail/{animeSite_ID}/*",
+        "titlePart": "Watch {title_animeTitle} | Prime Video",
+        "titleDeletePart": {
+            "front": "Watch ",
+            "back": " | Prime Video"
+        }
+    },
+    {
+        "siteName": "animeschedule",
+        "siteURL": "AnimeSchedule.net",
+        "startURL": "https://animeschedule.net/anime/",
+        "browseURL": "https://animeschedule.net/anime",
+        "allowedURL": "https://animeschedule.net/anime/{url_animeTitle}/*",
+        "titlePart": "{title_animeTitle} | AnimeSchedule",
+        "titleDeletePart": {
+            "back": " | AnimeSchedule"
+        }
+    },
+    {
+        "siteName": "anibrain",
+        "siteURL": "AniBrain.ai",
+        "startURL": "https://anibrain.ai/recommender/anime/",
+        "browseURL": "https://anibrain.ai/recommender/anime",
+        "allowedURL": "https://anibrain.ai/recommender/anime/{animeSite_ID}/*",
+        "titlePart": "Anime Like {title_animeTitle} | AniBrain",
+        "titleDeletePart": {
+            "front": "Anime Like ",
+            "back": " | AniBrain"
+        }
+    },
+    {
+        "siteName": "retrocrush",
+        "siteURL": "RetroCrush.tv",
+        "startURL": "https://www.retrocrush.tv/details/",
+        "browseURL": "https://www.retrocrush.tv/shows",
+        "allowedURL": "https://www.retrocrush.tv/details/{animeSite_ID}/{url_animeTitle}/*",
+        "titlePart": "Retrocrush: {title_animeTitle}",
+        "titleDeletePart": {
+            "front": "Retrocrush: "
+        }
+    }
+]
